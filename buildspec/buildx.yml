@@ -1,0 +1,49 @@
+version: 0.2
+
+env:
+  exported-variables:
+    - IMAGE_URI
+    - LATEST_URI
+
+phases:
+  pre_build:
+    commands:
+      - echo "Enabling Docker Buildx"
+      - docker version
+      - docker buildx version || true
+      - docker buildx create --use
+
+      - echo "Logging into ECR"
+      - aws ecr get-login-password --region "$AWS_DEFAULT_REGION" | docker login --username AWS --password-stdin "$REPOSITORY"
+
+      - echo "Preparing tags"
+      - TAG="${CODEBUILD_BUILD_NUMBER}"
+      - IMAGE_URI="${REPOSITORY_URI}:${TAG}"
+      - LATEST_URI="${REPOSITORY_URI}:latest"
+      - CACHE_URI="${REPOSITORY_URI}:buildcache"
+
+  build:
+    on-failure: ABORT
+    commands:
+      - echo "Building and pushing image with Buildx: $IMAGE_URI and $LATEST_URI"
+      - |
+        docker buildx build \
+          --platform "${PLATFORMS}" \
+          --sbom=false \
+          --provenance=false \
+          --cache-from=type=registry,ref="$CACHE_URI" \
+          --cache-to=type=registry,ref="$CACHE_URI",mode=max \
+          -t "$IMAGE_URI" \
+          -t "$LATEST_URI" \
+          --push \
+          .
+
+post_build:
+  commands:
+    - echo "Pushed: $IMAGE_URI"
+    - echo "Pushed: $LATEST_URI"
+
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: yes
