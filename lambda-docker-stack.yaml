@@ -1,13 +1,7 @@
 Parameters:
   ImageUri:
     Type: String
-  TimeoutSeconds:
-    Type: Number
-    Default: 30
-  MemorySizeMb:
-    Type: Number
-    Default: 512
-  
+
 Resources:
   HelloWorldDockerLambdaContainer-1:
       Type: AWS::Lambda::Function
@@ -17,9 +11,9 @@ Resources:
         PackageType: Image
         Code:
           ImageUri: !Ref ImageUri
-        Timeout: !Ref TimeoutSeconds
-        MemorySize: !Ref MemorySizeMb
-        Architectures: [ x86_64 ] 
+        Timeout: 30
+        MemorySize: 512
+        Architectures: x86_64
         ImageConfig:
           Command: ["module3.lambda-function3.handler"]
         
