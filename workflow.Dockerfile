@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 COPY requires.txt .
 
 # Install the specified packages
-RUN pip install -r requires.txt --target=/usr/src/app
+RUN pip install -r requires.txt  --quiet  --target=/usr/src/app
 
 # Copy function code
 COPY . .
