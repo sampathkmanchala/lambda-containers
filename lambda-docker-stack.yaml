@@ -13,7 +13,6 @@ Resources:
           ImageUri: !Ref ImageUri
         Timeout: 30
         MemorySize: 512
-        Architectures: x86_64
         ImageConfig:
           Command: ["module3.lambda-function3.handler"]
         
