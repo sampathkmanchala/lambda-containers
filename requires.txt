@@ -1,3 +1,4 @@
 PyQRCode==1.2.1
 requests
 PyJWT==2.8.0
+faker==25.1.0
