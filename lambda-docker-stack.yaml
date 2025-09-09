@@ -40,7 +40,7 @@ Resources:
         Timeout: 30
         MemorySize: 512
         ImageConfig:
-          Command: ["lambda-function3.handler"]
+          Command: ["lambda-function.handler"]
 
 Outputs:
   LambdaFunctionContainerName:
