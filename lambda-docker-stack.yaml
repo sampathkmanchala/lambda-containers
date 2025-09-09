@@ -53,7 +53,7 @@ Resources:
         Timeout: 30
         MemorySize: 512
         ImageConfig:
-          Command: ["module2.inner_module.lambda-function_im.handler"]
+          Command: ["module2.inner_module.lambda-function4.handler"]
 
 
 Outputs:
