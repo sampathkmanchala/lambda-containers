@@ -17,7 +17,6 @@ Resources:
         ImageConfig:
           Command: ["module3.lambda-function3.handler"]
         
-
 Outputs:
   LambdaFunctionContainerName:
     Description: Name of the Lambda function
