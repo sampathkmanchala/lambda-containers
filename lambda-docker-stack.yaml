@@ -15,6 +15,19 @@ Resources:
         MemorySize: 512
         ImageConfig:
           Command: ["module3.lambda-function3.handler"]
+  
+  HelloWorldDockerLambdaContainer2:
+      Type: AWS::Lambda::Function
+      Properties:
+        FunctionName: hello-world-lambda-docker-container-2
+        Role: arn:aws:iam::132502993358:role/lambda-full-access
+        PackageType: Image
+        Code:
+          ImageUri: !Ref ImageUri
+        Timeout: 30
+        MemorySize: 512
+        ImageConfig:
+          Command: ["module2.lambda-function2.handler"]
         
 Outputs:
   LambdaFunctionContainerName:
