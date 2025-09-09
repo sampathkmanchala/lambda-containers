@@ -45,7 +45,7 @@ Resources:
   HelloWorldDockerLambdaContainer4:
       Type: AWS::Lambda::Function
       Properties:
-        FunctionName: hello-world-lambda-docker-container4
+        FunctionName: hello-world-lambda-docker-container-4
         Role: arn:aws:iam::132502993358:role/lambda-full-access
         PackageType: Image
         Code:
