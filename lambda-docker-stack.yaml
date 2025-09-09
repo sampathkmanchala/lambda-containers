@@ -1,0 +1,27 @@
+Parameters:
+  ImageUri:
+    Type: String
+
+Resources:
+  HelloWorldDockerLambdaContainer1:
+      Type: AWS::Lambda::Function
+      Properties:
+        FunctionName: hello-world-lambda-docker-container-1
+        Role: arn:aws:iam::132502993358:role/lambda-full-access
+        PackageType: Image
+        Code:
+          ImageUri: !Ref ImageUri
+        Timeout: 30
+        MemorySize: 512
+        Architectures: x86_64
+        ImageConfig:
+          Command: ["module3.lambda-function3.handler"]
+        
+
+Outputs:
+  LambdaFunctionContainerName:
+    Description: Name of the Lambda function
+    Value: !Ref  HelloWorldDockerLambdaContainer-1
+  LambdaFunctionContainerArn:
+    Description: Latest published Lambda Layer version ARN
+    Value: !GetAtt  HelloWorldDockerLambdaContainer-1.Arn
