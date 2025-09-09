@@ -20,7 +20,7 @@ Resources:
 Outputs:
   LambdaFunctionContainerName:
     Description: Name of the Lambda function
-    Value: !Ref  HelloWorldDockerLambdaContainer-1
+    Value: !Ref  HelloWorldDockerLambdaContainer1
   LambdaFunctionContainerArn:
     Description: Latest published Lambda Layer version ARN
-    Value: !GetAtt  HelloWorldDockerLambdaContainer-1.Arn
+    Value: !GetAtt  HelloWorldDockerLambdaContainer1.Arn
