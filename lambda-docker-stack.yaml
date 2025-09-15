@@ -8,7 +8,6 @@ Resources:
       Properties:
         FunctionName: hello-world-lambda-docker-container-1
         Role: arn:aws:iam::132502993358:role/lambda-full-access
-        PackageType: Image
         Code:
           ImageUri: !Ref ImageUri
         Timeout: 30
